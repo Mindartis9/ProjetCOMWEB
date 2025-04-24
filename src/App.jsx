@@ -11,7 +11,7 @@ function App() {
       </div>
       <h1>Bienvenue sur Poulpadémie</h1>
       <h2>Connectez-vous</h2>
-      <table>
+      <table className='login'>
         <tr>
           <td>Identifiant</td>
           <td>Mot de passe</td>
