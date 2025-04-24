@@ -1,33 +1,62 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
+  const [role, setRole] = useState('eleve');
+  const [identifiant, setIdentifiant] = useState('');
+  const [motDePasse, setMotDePasse] = useState('');
+
+  const handleRoleChange = (newRole) => {
+    setRole(newRole);
+  };
+
+  const handleLogin = () => {
+    console.log(`Tentative de connexion : ${role}, ${identifiant}, ${motDePasse}`);
+  };
 
   return (
-    <>
-      <div>
-          <img  />
+    <div className="app-container">
+      <div className="login-box">
+        <div className="role-switch">
+          <button
+            className={`role-btn ${role === 'eleve' ? 'active' : ''}`}
+            onClick={() => handleRoleChange('eleve')}
+          >
+            Élève
+          </button>
+          <button
+            className={`role-btn ${role === 'professeur' ? 'active' : ''}`}
+            onClick={() => handleRoleChange('professeur')}
+          >
+            Professeur
+          </button>
+        </div>
+        <h2 className="login-title">Connexion {role === 'eleve' ? "élève" : "professeur"}</h2>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Identifiant"
+            value={identifiant}
+            onChange={(e) => setIdentifiant(e.target.value)}
+            className="input-field"
+          />
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            value={motDePasse}
+            onChange={(e) => setMotDePasse(e.target.value)}
+            className="input-field"
+          />
+          <button
+            onClick={handleLogin}
+            className="submit-btn"
+          >
+            Se connecter
+          </button>
+        </div>
       </div>
-      <h1>Bienvenue sur Poulpadémie</h1>
-      <h2>Connectez-vous</h2>
-      <table className='login'>
-        <tr>
-          <td>Identifiant</td>
-          <td>Mot de passe</td>
-        </tr>
-        <tr>
-          <td><input type="text" placeholder="Identifiant" /></td>
-          <td><input type="text" placeholder="Mot de passe" /></td>
-        </tr>
-        <tr>
-          <td colSpan="2">
-            <button type='submit'>Se connecter</button>
-          </td>
-        </tr>
-      </table>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
