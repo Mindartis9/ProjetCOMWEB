@@ -1,14 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      
+      <div>
+          <img  />
+      </div>
+      <h1>Bienvenue sur Poulpadémie</h1>
+      <h2>Connectez-vous</h2>
+      <table>
+        <tr>
+          <td>Identifiant</td>
+          <td>Mot de passe</td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="Identifiant" /></td>
+          <td><input type="text" placeholder="Mot de passe" /></td>
+        </tr>
+        <tr>
+          <td colSpan="2">
+            <button type='submit'>Se connecter</button>
+          </td>
+        </tr>
+      </table>
     </>
   )
 }
