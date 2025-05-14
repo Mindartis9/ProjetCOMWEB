@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import './App.css';
 
-const ProfPage = ({ notes, nomProf , identifiant}) => {
+const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
   const [idEleve, setIdEleve] = useState('');
   const [note, setNote] = useState('');
   const [confirmation, setConfirmation] = useState('');
