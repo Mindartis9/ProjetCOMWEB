@@ -38,7 +38,7 @@ const ProfPage = ({ notes, nomProf , identifiant}) => {
       <ul>
         {notes.map((note, index) => (
           <li key={index}>
-            Élève : {note.nomEleve} - {note.matiere} : {note.note}/20
+            Classe {note.classe}, Élève : {note.nomEleve} {note.prenomEleve} : {note.note}/20
           </li>
         ))}
       </ul>
