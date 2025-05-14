@@ -6,7 +6,7 @@ const ElevePage = ({ notes, identifiant }) => {
       <ul>
         {notes.map((note, index) => (
           <li key={index}>
-            {note.matiere} : {note.note}/20
+            {note.professeur} - {note.matiere} : {note.note}/20
           </li>
         ))}
       </ul>
