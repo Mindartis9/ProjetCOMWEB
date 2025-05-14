@@ -1,8 +1,10 @@
-const ElevePage = ({ notes, nomEleve }) => {
+import './App.css';
+
+const ElevePage = ({ notes, nomEleve, prenomEleve }) => {
   return (
     <div>
-      <h2>Bienvenue {nomEleve}</h2>
-      <h3>Vos notes :</h3>
+      <h2>Bienvenue {prenomEleve} {nomEleve}</h2>
+      <h3>Page notes</h3>
       <ul>
         {notes.map((note, index) => (
           <li key={index}>

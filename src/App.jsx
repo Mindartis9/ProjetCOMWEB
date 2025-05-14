@@ -10,7 +10,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [notes, setNotes] = useState([]);
   const [nomProf, setNomProf] = useState('');
+  const [prenomProf, setPrenomProf] = useState('');
   const [nomEleve, setNomEleve] = useState('');
+  const [prenomEleve, setPrenomEleve] = useState('');
 
 
   const handleRoleChange = (newRole) => {
@@ -37,7 +39,9 @@ function App() {
       if (data.success && Array.isArray(data.notes)) {
         setNotes(data.notes);
         setNomEleve(data.nom_etudiant);
-        setNomProf(data.nom_prof);  
+        setNomProf(data.nom_prof); 
+        setPrenomProf(data.prenom_prof);
+        setPrenomEleve(data.prenom_etudiant);
         setIsLoggedIn(true);
       } else {
         alert(data.message || 'Identifiants incorrects ou erreur de données.');
@@ -51,9 +55,9 @@ function App() {
   // 🔁 Affichage après connexion
   if (isLoggedIn) {
     return role === 'eleve' ? (
-      <ElevePage notes={notes} nomEleve={nomEleve} />
+      <ElevePage notes={notes} nomEleve={nomEleve} prenomEleve={prenomEleve} />
     ) : (
-      <ProfPage notes={notes} nomProf={nomProf} />
+      <ProfPage notes={notes} nomProf={nomProf} prenomProf={prenomProf} />
     );
   }
 

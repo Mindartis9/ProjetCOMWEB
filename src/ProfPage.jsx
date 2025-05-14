@@ -1,7 +1,9 @@
-const ProfPage = ({ notes, nomProf }) => {
+import './App.css';
+
+const ProfPage = ({ notes, nomProf, prenomProf }) => {
   return (
     <div>
-      <h2>Bienvenue Professeur {nomProf}</h2>
+      <h2>Bienvenue Professeur {prenomProf} {nomProf}</h2>
       <h3>Notes attribuées :</h3>
       <ul>
         {notes.map((note, index) => (
