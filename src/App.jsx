@@ -1,19 +1,58 @@
 import { useState } from 'react';
 import './App.css';
+import ElevePage from './ElevePage.jsx';
+import ProfPage from './ProfPage.jsx';
 
 function App() {
   const [role, setRole] = useState('eleve');
   const [identifiant, setIdentifiant] = useState('');
   const [motDePasse, setMotDePasse] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [notes, setNotes] = useState([]);
 
   const handleRoleChange = (newRole) => {
     setRole(newRole);
   };
 
-  const handleLogin = () => {
-    console.log(`Tentative de connexion : ${role}, ${identifiant}, ${motDePasse}`);
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost/ProjetComWeb/etudiant.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          role,
+          identifiant,
+          motDePasse,
+        }),
+      });
+
+      const data = await response.json();
+      console.log('Réponse du serveur:', data);
+
+      if (data.success && Array.isArray(data.notes)) {
+        setNotes(data.notes);
+        setIsLoggedIn(true);
+      } else {
+        alert(data.message || 'Identifiants incorrects ou erreur de données.');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la connexion:', error);
+      alert('Erreur de connexion au serveur.');
+    }
   };
 
+  // 🔁 Affichage après connexion
+  if (isLoggedIn) {
+    return role === 'eleve' ? (
+      <ElevePage notes={notes} identifiant={identifiant} />
+    ) : (
+      <ProfPage notes={notes} identifiant={identifiant} />
+    );
+  }
+
+  // 🔒 Formulaire de connexion
   return (
     <div className="app-container">
       <div className="login-box">
@@ -31,7 +70,9 @@ function App() {
             Professeur
           </button>
         </div>
-        <h2 className="login-title">Connexion {role === 'eleve' ? "élève" : "professeur"}</h2>
+        <h2 className="login-title">
+          Connexion {role === 'eleve' ? 'élève' : 'professeur'}
+        </h2>
         <div className="form-group">
           <input
             type="text"
@@ -47,10 +88,7 @@ function App() {
             onChange={(e) => setMotDePasse(e.target.value)}
             className="input-field"
           />
-          <button
-            onClick={handleLogin}
-            className="submit-btn"
-          >
+          <button onClick={handleLogin} className="submit-btn">
             Se connecter
           </button>
         </div>
