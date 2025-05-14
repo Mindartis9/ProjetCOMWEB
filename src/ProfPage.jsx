@@ -1,7 +1,7 @@
-const ProfPage = ({ notes, identifiant }) => {
+const ProfPage = ({ notes, nomProf }) => {
   return (
     <div>
-      <h2>Bienvenue Professeur {identifiant}</h2>
+      <h2>Bienvenue Professeur {nomProf}</h2>
       <h3>Notes attribuées :</h3>
       <ul>
         {notes.map((note, index) => (
