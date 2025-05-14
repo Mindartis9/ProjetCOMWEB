@@ -53,7 +53,7 @@ function App() {
     return role === 'eleve' ? (
       <ElevePage notes={notes} nomEleve={nomEleve} />
     ) : (
-      <ProfPage notes={notes} nomProf={nomProf} />
+      <ProfPage notes={notes} nomProf={nomProf} identifiant={identifiant}/>
     );
   }
 
