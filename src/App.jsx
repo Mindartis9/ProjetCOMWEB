@@ -65,6 +65,10 @@ function App() {
   return (
     <div className="app-container">
       <div className="login-box">
+        <div className='welcome-container'>
+        <img src="poulpe3.jpg" alt="Logo Poulpy Academy" className="logo" />
+        <h1>Bienvenue sur Poulpy Academy !</h1>
+        </div>
         <div className="role-switch">
           <button
             className={`role-btn ${role === 'eleve' ? 'active' : ''}`}
