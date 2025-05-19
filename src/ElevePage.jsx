@@ -1,6 +1,6 @@
 import './App.css';
 
-const ElevePage = ({ notes, nomEleve, prenomEleve }) => {
+const ElevePage = ({ notes, nomEleve, prenomEleve }) => { // Page d'accueil de l'élève
   return (
     <div>
       <div className="header-box">

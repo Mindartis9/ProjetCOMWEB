@@ -21,16 +21,16 @@ function App() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('https://mmarchais002.zzz.bordeaux-inp.fr/etudiant.php', {
+      const response = await fetch('https://mmarchais002.zzz.bordeaux-inp.fr/etudiant.php', { // URL de l'API
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ 
           role,
           identifiant,
           motDePasse,
-        }),
+        }), // Envoi des données de connexion
       });
 
       const data = await response.json();
@@ -53,7 +53,7 @@ function App() {
   };
 
   // Affichage après connexion
-  if (isLoggedIn) {
+  if (isLoggedIn) { 
     return role === 'eleve' ? (
       <ElevePage notes={notes} nomEleve={nomEleve} prenomEleve={prenomEleve} />
     ) : (

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 
-const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
+const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => { // Page d'accueil du professeur
   const [prenomEleve, setPrenomEleve] = useState('');
   const [nomEleve, setNomEleve] = useState('');
   const [note, setNote] = useState('');
@@ -11,7 +11,7 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('https://mmarchais002.zzz.bordeaux-inp.fr/ajouter_note.php', {
+    const response = await fetch('https://mmarchais002.zzz.bordeaux-inp.fr/ajouter_note.php', { // URL de l'API
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -21,12 +21,12 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
         prenom_etudiant: prenomEleve,
         nom_etudiant: nomEleve,
         valeur_note: note,
-      }),
+      }), // Envoi des données de la note
     });
 
     const data = await response.json();
     if (data.success) {
-      setConfirmation('Note ajoutée avec succès.');
+      setConfirmation('Note ajoutée avec succès.'); // Message de confirmation
       setPrenomEleve('');
       setNomEleve('');
       setNote('');
