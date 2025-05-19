@@ -21,7 +21,7 @@ function App() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost/ProjetComWeb/etudiant.php', {
+      const response = await fetch('https://mmarchais002.zzz.bordeaux-inp.fr/etudiant.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

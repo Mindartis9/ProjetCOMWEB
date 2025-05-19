@@ -11,7 +11,7 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost/ProjetComWeb/ajouter_note.php', {
+    const response = await fetch('https://mmarchais002.zzz.bordeaux-inp.fr/ajouter_note.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
