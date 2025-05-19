@@ -3,15 +3,20 @@ import './App.css';
 const ElevePage = ({ notes, nomEleve, prenomEleve }) => {
   return (
     <div>
-      <h2>Bienvenue {prenomEleve} {nomEleve}</h2>
-      <h3>Page notes</h3>
-      <ul>
-        {notes.map((note, index) => (
-          <li key={index}>
-            {note.professeur} - {note.matiere} : {note.note}/20
-          </li>
-        ))}
-      </ul>
+      <div className="header-box">
+        Bienvenue {prenomEleve} {nomEleve}
+      </div>
+
+      <h3>Vos notes : </h3>     {/*Tableau de notes*/}
+      {notes.map((note, index) => (
+        <div key={index} className="tableau-notes">
+          <div className="titre">
+            <strong>{note.matiere}</strong>
+            <div className="sous-titre">{note.professeur}</div>
+          </div>
+          <div className="note">{note.note}/20</div>
+        </div>
+      ))}
     </div>
   );
 };

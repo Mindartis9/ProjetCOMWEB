@@ -133,4 +133,89 @@ h1 {
   background-color:  #21850df6;
 }
 
+/*pages de notes élèves et prof*/
+.notes-container {
+  max-width: 500px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.tableau-notes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f6f6f6;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px rgba(0,0,0,0.1);
+}
+
+.header-box {
+  background-color: #48e963;
+  padding: 18px 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color:  #333333;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-align: center;
+  
+}
+
+/*style du tableau de notes*/
+.titre {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.sous-titre {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.note {
+  background-color: #48e963;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+
+/*formulaire attribution de notes*/
+.formulaire {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.input-field2 {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  display: block;
+  width: 100%;
+}
+
+.submit-button {
+  display: block;
+  margin: 20px auto 0 auto; /* haut auto bas auto */
+  padding: 10px 20px;
+  background-color: #48e963;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #48e963;
+}
 

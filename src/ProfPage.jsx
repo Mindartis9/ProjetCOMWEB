@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './App.css';
 
 const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
-  const [idEleve, setIdEleve] = useState('');
+  const [prenomEleve, setPrenomEleve] = useState('');
+  const [nomEleve, setNomEleve] = useState('');
   const [note, setNote] = useState('');
   const [confirmation, setConfirmation] = useState('');
   const [identifiantProf, setIdentifiantProf] = useState(identifiant);
@@ -17,7 +18,8 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
       },
       body: JSON.stringify({
         identifiant_prof: identifiantProf,
-        id_etudiant: idEleve,
+        prenom_etudiant: prenomEleve,
+        nom_etudiant: nomEleve,
         valeur_note: note,
       }),
     });
@@ -25,7 +27,8 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
     const data = await response.json();
     if (data.success) {
       setConfirmation('Note ajoutée avec succès.');
-      setIdEleve('');
+      setPrenomEleve('');
+      setNomEleve('');
       setNote('');
     } else {
       setConfirmation('Erreur : ' + data.message);
@@ -33,27 +36,49 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
   };
 
   return (
-    <div>
-      <h2>Bienvenue Professeur {prenomProf} {nomProf}</h2>
-      <h3>Notes attribuées :</h3>
-      <ul>
-        {notes.map((note, index) => (
-          <li key={index}>
-            Classe {note.classe}, Élève : {note.nomEleve} {note.prenomEleve} : {note.note}/20
-          </li>
-        ))}
-      </ul>
+   <div className="notes-container">
 
-      <h3>Attribuer une nouvelle note :</h3>
-      <form onSubmit={handleSubmit}>
+      <div className="header-box">
+        Bonjour {prenomProf} {nomProf}
+      </div>
+
+      <h3>Notes attribuées :</h3>     {/*Tableau de notes*/}
+      
+        {notes.map((noteItem, index) => (
+          <div key={index} className="tableau-notes">
+            <div className="titre">
+              <strong>{noteItem.nomEleve} {noteItem.prenomEleve}</strong>
+              <div className="sous-titre">
+                Classe {noteItem.classe}
+              </div>
+            </div>
+            <div className="note">{noteItem.note}/20</div>
+          </div>
+        ))}
+      
+
+      <h3 style={{ marginTop: '30px' }}>Attribuer une nouvelle note :</h3>
+      <form onSubmit={handleSubmit} className="formulaire">
+    
         <input
           type="text"
-          placeholder="ID de l'élève"
-          value={idEleve}
-          onChange={(e) => setIdEleve(e.target.value)}
+          placeholder="Prénom de l'élève"
+          value={prenomEleve}
+          onChange={(e) => setPrenomEleve(e.target.value)}
           required
+          className="input-field2"
         />
-        <input
+
+        <input 
+          type="text"
+          placeholder="Nom de l'élève"
+          value={nomEleve}
+          onChange={(e) => setNomEleve(e.target.value)}
+          required
+          className="input-field2"
+        />
+
+        <input 
           type="number"
           placeholder="Note /20"
           min="0"
@@ -61,10 +86,14 @@ const ProfPage = ({ notes, nomProf , prenomProf, identifiant}) => {
           value={note}
           onChange={(e) => setNote(e.target.value)}
           required
+          className="input-field2"
         />
-        <button type="submit">Ajouter la note</button>
+
+        <button type="submit" className="submit-button">
+          Ajouter la note
+        </button>
       </form>
-      <p>{confirmation}</p>
+      {confirmation && <p className="message">{confirmation}</p>}
     </div>
   );
 };
