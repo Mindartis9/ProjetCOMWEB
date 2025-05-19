@@ -52,7 +52,7 @@ function App() {
     }
   };
 
-  // 🔁 Affichage après connexion
+  // Affichage après connexion
   if (isLoggedIn) {
     return role === 'eleve' ? (
       <ElevePage notes={notes} nomEleve={nomEleve} prenomEleve={prenomEleve} />
@@ -61,7 +61,7 @@ function App() {
     );
   }
 
-  // 🔒 Formulaire de connexion
+  // Formulaire de connexion
   return (
     <div className="app-container">
       <div className="login-box">
